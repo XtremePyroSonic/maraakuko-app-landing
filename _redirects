@@ -1,14 +1,25 @@
-# Cloudflare static-asset _redirects — route every /article/<anything>
-# tap from a non-installed device to the single fallback HTML at root.
-# The landing page reads the id from `window.location.pathname` and
-# renders the right preview / store-redirect.
+# Cloudflare static-asset _redirects.
 #
-# Installed devices NEVER reach this rule because iOS Universal
-# Links / Android App Links intercept the URL before the browser
-# fetches it. This rewrite only matters when the user's device
-# can't claim the link (no app, or app not yet verified).
+# Status code semantics in this file:
+#   200 = rewrite (URL bar stays, file at target is served)
+#   301/302/307/308 = HTTP redirect (URL bar changes)
 #
-# Target is intentionally OUTSIDE /article/ so Wrangler's HTML auto-
-# handling (which strips /index from a target) doesn't loop the rule
-# back into itself.
+# We're under `html_handling: "none"` (see wrangler.jsonc), so the
+# auto-index-resolution that other Cloudflare modes provide is off
+# — every served URL must map either to a literal file path or to
+# an explicit rule below.
+
+# Marketing root → serve index.html. Needed because html_handling:
+# "none" disables Cloudflare's implicit "/  → /index.html" routing.
+/  /index.html  200
+
+# Article share fallback. Every /article/<anything> tap from a
+# non-installed device serves the same `article-fallback.html` —
+# the page reads the id from `window.location.pathname` and renders
+# preview + store redirect. Installed devices NEVER reach this rule
+# because iOS Universal Links / Android App Links intercept the URL
+# before the browser fetches it.
+#
+# Target is OUTSIDE /article/ so Wrangler's link validator doesn't
+# detect a loop.
 /article/*  /article-fallback.html  200
