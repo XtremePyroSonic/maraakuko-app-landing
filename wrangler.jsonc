@@ -1,7 +1,9 @@
 {
-  // Cloudflare Workers Assets config. Replaces the auto-generated
-  // wrangler.jsonc the Pages → Workers build runner stamps out the
-  // first time you deploy without one of these committed.
+  // Cloudflare Workers Assets config. Cloudflare's build runner
+  // initially stamped out a defaults-only version of this file via
+  // its `cloudflare/workers-autoconfig` PR (#1). This commit takes
+  // the union of that auto-generated baseline + the overrides we
+  // need for the share flow.
   //
   // The critical override is `assets.html_handling: "none"`. The
   // default ("auto-trailing-slash") strips `.html` from URLs AND
@@ -24,5 +26,8 @@
     "directory": ".",
     "html_handling": "none",
     "not_found_handling": "404-page"
-  }
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
 }
