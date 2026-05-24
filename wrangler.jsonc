@@ -1,0 +1,28 @@
+{
+  // Cloudflare Workers Assets config. Replaces the auto-generated
+  // wrangler.jsonc the Pages → Workers build runner stamps out the
+  // first time you deploy without one of these committed.
+  //
+  // The critical override is `assets.html_handling: "none"`. The
+  // default ("auto-trailing-slash") strips `.html` from URLs AND
+  // converts rewrites in `_redirects` into 307 redirects to the
+  // cleaned URL — which breaks our share flow because the visible
+  // URL would change from `/article/abc123` to `/article-fallback`,
+  // destroying the id the landing-page JS needs to read from
+  // `window.location.pathname`.
+  //
+  // With "none", `_redirects` `200` rules behave as true rewrites:
+  // the file at the target path is served at the original URL.
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "maraakuko-app-landing",
+  "compatibility_date": "2026-05-24",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "html_handling": "none",
+    "not_found_handling": "404-page"
+  }
+}
