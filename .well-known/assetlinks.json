@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.panafrocore.panafrocore",
+      "sha256_cert_fingerprints": [
+        "69:65:00:64:1F:CC:E5:C6:8B:B1:B1:16:F1:B4:8F:FE:20:8D:A0:25:ED:2D:AE:7A:1C:8B:82:DB:43:F2:7E:1F"
+      ]
+    }
+  }
+]

@@ -1,0 +1,13 @@
+# Cloudflare Pages _headers — controls Content-Type for the
+# .well-known/* files. Apple requires apple-app-site-association
+# to be served with `Content-Type: application/json` (and crucially
+# WITHOUT a `.json` file extension on the URL path). Google's
+# assetlinks.json verifier also requires application/json.
+
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  Cache-Control: public, max-age=300
+
+/.well-known/assetlinks.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=300

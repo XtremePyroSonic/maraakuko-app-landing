@@ -1,0 +1,16 @@
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node tooling (in case we add CF Functions later)
+node_modules/
+.wrangler/
+.env
+.env.*
+!.env.example
