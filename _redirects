@@ -1,10 +1,14 @@
-# Cloudflare Pages _redirects — route every /article/<anything> tap
-# from a non-installed device to the single fallback HTML. The
-# landing page reads the id from `window.location.pathname` and
+# Cloudflare static-asset _redirects — route every /article/<anything>
+# tap from a non-installed device to the single fallback HTML at root.
+# The landing page reads the id from `window.location.pathname` and
 # renders the right preview / store-redirect.
 #
 # Installed devices NEVER reach this rule because iOS Universal
 # Links / Android App Links intercept the URL before the browser
 # fetches it. This rewrite only matters when the user's device
 # can't claim the link (no app, or app not yet verified).
-/article/*  /article/index.html  200
+#
+# Target is intentionally OUTSIDE /article/ so Wrangler's HTML auto-
+# handling (which strips /index from a target) doesn't loop the rule
+# back into itself.
+/article/*  /article-fallback.html  200

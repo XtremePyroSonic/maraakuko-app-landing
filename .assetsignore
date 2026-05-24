@@ -1,0 +1,21 @@
+# Cloudflare Workers Assets ignore. Wrangler does NOT auto-respect
+# .gitignore — without this file, every .git/* + .wrangler/* path
+# gets uploaded as a static asset (visible in the build log as
+# "Read 84 files from the assets directory" when the site itself
+# only has ~10 files).
+#
+# Anything matched here is excluded from the asset upload. Same
+# glob semantics as .gitignore.
+
+# Git metadata
+.git
+.git/**
+
+# Wrangler scratch
+.wrangler
+.wrangler/**
+
+# Repo docs not meant for the public-facing site
+README.md
+.gitignore
+.assetsignore
