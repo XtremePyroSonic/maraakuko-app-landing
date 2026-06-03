@@ -6,6 +6,7 @@ Static site deployed to Cloudflare Pages that serves:
 2. **iOS Universal Link verification** via `/.well-known/apple-app-site-association`.
 3. **Android App Link verification** via `/.well-known/assetlinks.json`.
 4. **Root marketing page** at `https://maraakuko.app/`.
+5. **Legal & policy pages** at `https://maraakuko.app/legal/<slug>/` — the canonical, hosted versions of the app's 9 policies (see [Legal pages](#legal-pages) below).
 
 When the Mara Akụkọ Flutter app is installed and the user taps `https://maraakuko.app/article/<id>` from any source (chat app, browser, email, push notification), iOS UL / Android App Link intercepts and opens the in-app `/article/<id>` route directly. This static site only renders for non-installed devices.
 
@@ -15,10 +16,45 @@ When the Mara Akụkọ Flutter app is installed and the user taps `https://mara
 |---|---|
 | `.well-known/apple-app-site-association` | iOS Universal Link manifest. JSON, no extension, served as `application/json`. |
 | `.well-known/assetlinks.json` | Android App Link manifest. JSON, served as `application/json`. |
-| `_headers` | Cloudflare Pages config to enforce `Content-Type: application/json` on the `.well-known/*` files. |
-| `_redirects` | Routes every `/article/*` path to `article/index.html` via SPA rewrite. |
+| `_headers` | Cloudflare Pages config: enforces `Content-Type: application/json` on the `.well-known/*` files and sets a 1-hour cache on `/legal/*`. |
+| `_redirects` | Routes `/article/*` to `article-fallback.html`, plus trailing-slash rewrites for `/legal/*` (auto-managed block — see below). |
 | `article/index.html` | Per-article landing page. Detects platform via UA, redirects to store after 1s, with "Continue in Browser" escape hatch. |
-| `index.html` | Marketing root. |
+| `index.html` | Marketing root. Links to `/legal/`. |
+| `legal/index.html` | Index of all policies. **Generated** — do not edit by hand. |
+| `legal/<slug>/index.html` | One hosted policy page per slug (privacy-policy, terms-of-service, eula, …). **Generated** — do not edit by hand. |
+
+## Legal pages
+
+The 9 pages under `/legal/` are **generated from the app's single source of
+truth** — `lib/features/legal/data/legal_documents.dart` in the main app repo
+— by `scripts/gen_legal_pages.py` (in that repo, **not** here). This keeps the
+hosted text byte-identical to what users read inside the app.
+
+> ⚠️ **Never hand-edit `legal/` or the marked legal block in `_redirects`.**
+> Both are regenerated and your edits will be overwritten. To change wording,
+> edit `legal_documents.dart` in the app repo, re-run the generator, then
+> commit + push the regenerated files here.
+
+**Regenerate** (run from the app repo root, which has this folder checked out
+alongside it):
+
+```bash
+python scripts/gen_legal_pages.py
+```
+
+It writes `legal/<slug>/index.html` + `legal/index.html`, and rewrites the
+`# --- … generated legal routes … ---` block in `_redirects` (the root and
+`/article/*` rules are left untouched). Each page's URL slug comes from its
+`canonicalUrl` in the Dart file, so `https://maraakuko.app/legal/<slug>/`
+always matches the in-app "View canonical version online" link.
+
+The pages are the app's **canonical** legal home: the App Store / Play
+"Privacy Policy URL" and the `DMCA_POLICY_URL` Convex env var should point at
+the matching `https://maraakuko.app/legal/<slug>/`.
+
+> The policy text is accurate-as-of-codebase placeholder pending counsel
+> sign-off. When counsel finalizes wording, update `legal_documents.dart`,
+> re-run the generator, and re-deploy.
 
 ## Deploy steps
 

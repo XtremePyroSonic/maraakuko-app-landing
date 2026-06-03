@@ -23,3 +23,26 @@
 # Target is OUTSIDE /article/ so Wrangler's link validator doesn't
 # detect a loop.
 /article/*  /article-fallback.html  200
+
+# --- BEGIN generated legal routes (scripts/gen_legal_pages.py) ---
+/legal  /legal/index.html  200
+/legal/  /legal/index.html  200
+/legal/privacy-policy  /legal/privacy-policy/index.html  200
+/legal/privacy-policy/  /legal/privacy-policy/index.html  200
+/legal/terms-of-service  /legal/terms-of-service/index.html  200
+/legal/terms-of-service/  /legal/terms-of-service/index.html  200
+/legal/eula  /legal/eula/index.html  200
+/legal/eula/  /legal/eula/index.html  200
+/legal/creator-agreement  /legal/creator-agreement/index.html  200
+/legal/creator-agreement/  /legal/creator-agreement/index.html  200
+/legal/community-guidelines  /legal/community-guidelines/index.html  200
+/legal/community-guidelines/  /legal/community-guidelines/index.html  200
+/legal/content-moderation-policy  /legal/content-moderation-policy/index.html  200
+/legal/content-moderation-policy/  /legal/content-moderation-policy/index.html  200
+/legal/copyright-policy  /legal/copyright-policy/index.html  200
+/legal/copyright-policy/  /legal/copyright-policy/index.html  200
+/legal/appeals-policy  /legal/appeals-policy/index.html  200
+/legal/appeals-policy/  /legal/appeals-policy/index.html  200
+/legal/ai-transparency  /legal/ai-transparency/index.html  200
+/legal/ai-transparency/  /legal/ai-transparency/index.html  200
+# --- END generated legal routes ---
