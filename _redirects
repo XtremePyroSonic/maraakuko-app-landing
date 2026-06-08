@@ -24,6 +24,15 @@
 # detect a loop.
 /article/*  /article-fallback.html  200
 
+# Creator profile share fallback. Same mechanism as /article/* above:
+# a /creator/<id> tap from a non-installed device serves the shared
+# `creator-fallback.html`, which reads the id from
+# `window.location.pathname` and renders preview + store redirect.
+# Installed devices are intercepted by Universal Links / App Links
+# before they reach this rule. Target is OUTSIDE /creator/ so the
+# link validator doesn't detect a loop.
+/creator/*  /creator-fallback.html  200
+
 # --- BEGIN generated legal routes (scripts/gen_legal_pages.py) ---
 /legal  /legal/index.html  200
 /legal/  /legal/index.html  200

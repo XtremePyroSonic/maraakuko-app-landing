@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mara Akụkọ</title>
+  <meta name="description" content="Open this creator's profile in the Mara Akụkọ app." />
+
+  <!-- Open Graph + Twitter Card for link unfurl previews in
+       iMessage / WhatsApp / Slack / Telegram / Discord / X. v1
+       uses static brand metadata; v2 can swap to per-creator OG
+       tags rendered by a Cloudflare Function calling
+       `creatorStudio:getPublicProfile`. -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Mara Akụkọ" />
+  <meta property="og:title" content="Mara Akụkọ" />
+  <meta property="og:description" content="Pan-African news, in your pocket." />
+  <meta property="og:image" content="https://maraakuko.app/assets/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mara Akụkọ" />
+  <meta name="twitter:description" content="Pan-African news, in your pocket." />
+  <meta name="twitter:image" content="https://maraakuko.app/assets/og-default.png" />
+
+  <link rel="icon" href="/assets/favicon.ico" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #1a1612;
+      --surface: #262220;
+      --surface-high: #332d29;
+      --on-surface: #f0e8de;
+      --on-surface-variant: #a8b0ac;
+      --gold: #f4c97a;
+      --primary: #2eaf8e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--on-surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+    .card {
+      max-width: 420px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 40px 28px;
+      text-align: center;
+    }
+    .logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: var(--surface-high);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .logo svg { width: 44px; height: 44px; }
+    h1 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 28px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--gold);
+      margin: 0 0 12px;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--on-surface-variant);
+      margin: 0 0 28px;
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      border: 0;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--bg);
+    }
+    .btn-secondary {
+      background: var(--surface-high);
+      color: var(--on-surface);
+    }
+    .btn:hover { opacity: 0.9; }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--on-surface-variant);
+    }
+    .preview {
+      display: none;
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--surface-high);
+      border-radius: 12px;
+      text-align: left;
+    }
+    .preview.show { display: block; }
+    .preview-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 18px;
+      color: var(--on-surface);
+      margin: 0 0 6px;
+      line-height: 1.3;
+    }
+    .preview-excerpt {
+      font-size: 13px;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+      </svg>
+    </div>
+    <h1>Mara Akụkọ</h1>
+    <p id="status">Opening this creator&rsquo;s profile in the app&hellip;</p>
+
+    <div class="actions">
+      <a id="storeBtn" href="#" class="btn btn-primary">Get the app</a>
+      <button id="browserBtn" class="btn btn-secondary" type="button">Continue in Browser</button>
+    </div>
+
+    <div class="preview" id="preview">
+      <p class="preview-title" id="previewTitle"></p>
+      <p class="preview-excerpt" id="previewExcerpt"></p>
+    </div>
+
+    <p class="footer">Pan-African news, in your pocket.</p>
+  </main>
+
+  <script>
+    // Configuration. Replace placeholders once the app is listed in
+    // each store. Until then the buttons land on the store homepage
+    // (Google) or do nothing useful (App Store needs a real id).
+    const APP_STORE_URL  = 'https://apps.apple.com/app/id0000000000';
+    const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.panafrocore.panafrocore';
+    const REDIRECT_DELAY_MS = 1000;
+
+    // Read creator id from /creator/<id> — Cloudflare's _redirects
+    // rewrites every /creator/* path to this single HTML, so the
+    // browser-visible URL still carries the id.
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const creatorId = pathParts[0] === 'creator' ? pathParts[1] : null;
+
+    // Platform detection. Used to pick the right store + tweak copy.
+    const ua = navigator.userAgent || '';
+    const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const isAndroid = /Android/.test(ua);
+    const isMobile = isiOS || isAndroid;
+
+    const storeBtn = document.getElementById('storeBtn');
+    const browserBtn = document.getElementById('browserBtn');
+    const status = document.getElementById('status');
+
+    if (isiOS) {
+      storeBtn.href = APP_STORE_URL;
+      storeBtn.textContent = 'Get it on the App Store';
+    } else if (isAndroid) {
+      storeBtn.href = PLAY_STORE_URL;
+      storeBtn.textContent = 'Get it on Google Play';
+    } else {
+      storeBtn.href = PLAY_STORE_URL;
+      storeBtn.textContent = 'Open in app';
+      status.textContent = 'This is a Mara Akụkọ creator profile link. Open it on a phone with the app installed, or get the app below.';
+    }
+
+    // Auto-redirect mobile users to the right store after a short
+    // delay so they can read the message + cancel via "Continue in
+    // Browser" if they want. Desktop users never auto-redirect —
+    // they stay on the page.
+    let redirectTimer = null;
+    if (isMobile && creatorId) {
+      redirectTimer = setTimeout(() => {
+        window.location.href = storeBtn.href;
+      }, REDIRECT_DELAY_MS);
+    }
+
+    // "Continue in Browser" cancels the auto-redirect and reveals
+    // a small preview block. v1 the preview is static placeholder;
+    // v2 a Cloudflare Function can fetch real creator metadata from
+    // Convex `creatorStudio:getPublicProfile` and inject server-side.
+    browserBtn.addEventListener('click', () => {
+      if (redirectTimer) {
+        clearTimeout(redirectTimer);
+        redirectTimer = null;
+      }
+      status.textContent = 'You can install the app any time to follow creators and read their stories.';
+      const preview = document.getElementById('preview');
+      document.getElementById('previewTitle').textContent =
+        creatorId ? 'This creator is on the Mara Akụkọ app.' : 'Mara Akụkọ';
+      document.getElementById('previewExcerpt').textContent =
+        creatorId
+          ? 'Tap Get the app above, then re-open this link to view their profile.'
+          : 'Pan-African news, in your pocket.';
+      preview.classList.add('show');
+    });
+  </script>
+</body>
+</html>

@@ -2,13 +2,13 @@
 
 Static site deployed to Cloudflare Pages that serves:
 
-1. **Article share fallback** at `https://maraakuko.app/article/<id>` for users without the app installed.
+1. **Share fallbacks** for users without the app installed — articles at `https://maraakuko.app/article/<id>` and creator profiles at `https://maraakuko.app/creator/<id>`.
 2. **iOS Universal Link verification** via `/.well-known/apple-app-site-association`.
 3. **Android App Link verification** via `/.well-known/assetlinks.json`.
 4. **Root marketing page** at `https://maraakuko.app/`.
 5. **Legal & policy pages** at `https://maraakuko.app/legal/<slug>/` — the canonical, hosted versions of the app's 9 policies (see [Legal pages](#legal-pages) below).
 
-When the Mara Akụkọ Flutter app is installed and the user taps `https://maraakuko.app/article/<id>` from any source (chat app, browser, email, push notification), iOS UL / Android App Link intercepts and opens the in-app `/article/<id>` route directly. This static site only renders for non-installed devices.
+When the Mara Akụkọ Flutter app is installed and the user taps `https://maraakuko.app/article/<id>` (or `/creator/<id>`) from any source (chat app, browser, email, push notification), iOS UL / Android App Link intercepts and opens the matching in-app route directly (`/article/<id>` or `/creator/profile/<id>`). This static site only renders for non-installed devices.
 
 ## Files
 
@@ -17,8 +17,9 @@ When the Mara Akụkọ Flutter app is installed and the user taps `https://mara
 | `.well-known/apple-app-site-association` | iOS Universal Link manifest. JSON, no extension, served as `application/json`. |
 | `.well-known/assetlinks.json` | Android App Link manifest. JSON, served as `application/json`. |
 | `_headers` | Cloudflare Pages config: enforces `Content-Type: application/json` on the `.well-known/*` files and sets a 1-hour cache on `/legal/*`. |
-| `_redirects` | Routes `/article/*` to `article-fallback.html`, plus trailing-slash rewrites for `/legal/*` (auto-managed block — see below). |
-| `article/index.html` | Per-article landing page. Detects platform via UA, redirects to store after 1s, with "Continue in Browser" escape hatch. |
+| `_redirects` | Routes `/article/*` to `article-fallback.html` and `/creator/*` to `creator-fallback.html`, plus trailing-slash rewrites for `/legal/*` (auto-managed block — see below). |
+| `article-fallback.html` | Per-article landing page. Detects platform via UA, redirects to store after 1s, with "Continue in Browser" escape hatch. |
+| `creator-fallback.html` | Per-creator-profile landing page. Same UA-detect + store-redirect behaviour, reading the id from `/creator/<id>`. |
 | `index.html` | Marketing root. Links to `/legal/`. |
 | `legal/index.html` | Index of all policies. **Generated** — do not edit by hand. |
 | `legal/<slug>/index.html` | One hosted policy page per slug (privacy-policy, terms-of-service, eula, …). **Generated** — do not edit by hand. |
@@ -77,7 +78,7 @@ Three placeholders must be replaced with real values before this site is useful:
 
 - `REPLACE_WITH_RELEASE_SHA256_COLON_SEPARATED` — SHA-256 of your Play Store upload keystore. Same command, with the release keystore path + alias + passwords. If a release keystore doesn't exist yet, leave the placeholder in for now — Play Store autoVerify won't work until a release build is signed and uploaded, but debug-build App Links will verify from the first entry.
 
-**`article/index.html`** — once the app is listed in the stores, update `APP_STORE_URL` and `PLAY_STORE_URL` at the top of the `<script>` block.
+**`article-fallback.html` + `creator-fallback.html`** — once the app is listed in the stores, update `APP_STORE_URL` and `PLAY_STORE_URL` at the top of the `<script>` block in both.
 
 ### 2. Push to a GitHub repo
 
@@ -111,6 +112,9 @@ curl -v https://maraakuko.app/.well-known/assetlinks.json
 
 # 3. Article landing page — must return 200 (any /article/<id> path)
 curl -v https://maraakuko.app/article/test-id
+
+# 4. Creator landing page — must return 200 (any /creator/<id> path)
+curl -v https://maraakuko.app/creator/test-id
 ```
 
 External validators:
