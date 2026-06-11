@@ -1,78 +1,704 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mara Akụkọ — Pan-African news, in your pocket</title>
-  <meta name="description" content="Mara Akụkọ delivers Pan-African news, original creator reporting, and source-balanced perspectives." />
-  <link rel="icon" href="/assets/favicon.ico" />
-  <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #1a1612;
-      color: #f0e8de;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 24px;
-      text-align: center;
-    }
-    h1 {
-      font-family: 'Newsreader', Georgia, serif;
-      font-size: 44px;
-      font-style: italic;
-      font-weight: 600;
-      color: #f4c97a;
-      margin: 0 0 16px;
-    }
-    p {
-      font-size: 17px;
-      max-width: 480px;
-      line-height: 1.55;
-      color: #a8b0ac;
-      margin: 0 0 32px;
-    }
-    .stores {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .stores a {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 9999px;
-      background: #2eaf8e;
-      color: #1a1612;
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .site-footer {
-      margin-top: 40px;
-      font-size: 13px;
-    }
-    .site-footer a {
-      color: #a8b0ac;
-      text-decoration: none;
-    }
-    .site-footer a:hover { color: #f4c97a; }
-  </style>
+  <title>Mara Akụkọ — Pan-African news with transparent trust</title>
+  <meta name="description" content="Mara Akụkọ brings Pan-African news into one feed — balanced sources, labeled opinion, and a visible trust signal on every story. Launching soon on iOS and Android." />
+  <link rel="canonical" href="https://maraakuko.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mara Akụkọ" />
+  <meta property="og:title" content="Mara Akụkọ — Pan-African news with transparent trust" />
+  <meta property="og:description" content="One feed for the continent and its diaspora: balanced sources, labeled opinion, and a visible trust signal on every story. Launching soon on iOS and Android." />
+  <meta property="og:url" content="https://maraakuko.app/" />
+  <meta property="og:image" content="https://maraakuko.app/assets/og-default.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mara Akụkọ — Pan-African news with transparent trust" />
+  <meta name="twitter:description" content="One feed for the continent and its diaspora: balanced sources, labeled opinion, and a visible trust signal on every story." />
+  <meta name="twitter:image" content="https://maraakuko.app/assets/og-default.png" />
+
+  <meta name="theme-color" content="#1A1612" />
+  <link rel="icon" href="/assets/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/newsreader-600-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/newsreader-600i-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/newsreader-600i-viet.woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/site.css?v=1" />
+  <script src="/assets/js/config.js?v=1" defer></script>
+  <script src="/assets/js/site.js?v=1" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://maraakuko.app/#org",
+        "name": "Mara Akụkọ",
+        "legalName": "Ikeniile Nexus",
+        "url": "https://maraakuko.app/",
+        "logo": "https://maraakuko.app/assets/icon-512.png",
+        "description": "Mara Akụkọ — Igbo for 'know the story' — is a Pan-African news app operated by Ikeniile Nexus, registered in Ireland (company no. 772826)."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://maraakuko.app/#site",
+        "url": "https://maraakuko.app/",
+        "name": "Mara Akụkọ",
+        "publisher": { "@id": "https://maraakuko.app/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://maraakuko.app/#app",
+        "name": "Mara Akụkọ",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "NewsApplication",
+        "description": "Pan-African news with balanced sources, labeled opinion, and transparent trust signals on every story.",
+        "author": { "@id": "https://maraakuko.app/#org" },
+        "inLanguage": ["en","ar","bn","de","es","fr","hi","id","ja","pt","ru","sw","tr","ur","zh"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/PreOrder"
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "When does Mara Akụkọ launch?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Soon. The app is in final preparation for the App Store and Google Play. Join the waitlist and we'll email you the moment it's live — the download buttons on this page go live at the same time." } },
+      { "@type": "Question", "name": "How much does it cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The core app is free — the feed, the Daily Briefing with Perspectives, trust badges, creator content, and translation. Premium adds Daily Insight, Trust Heatmaps, Source Balance, and Smart Alerts as a monthly or annual subscription with a free trial, billed through the App Store or Google Play. Cancel anytime." } },
+      { "@type": "Question", "name": "What does the name mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Mara Akụkọ is Igbo for 'know the story'. A griot is West Africa's storyteller, historian, and keeper of memory — the app is built to give that role modern tools." } },
+      { "@type": "Question", "name": "How are trust signals decided?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Stories are checked across sources for fact agreement and graded into consensus tiers — Superior, Strong, Fair, or Weak. AI models help with evaluation, but they are advisory only: humans make every enforcement decision, and each AI evaluation records a confidence level and rationale. The full methodology is public in our AI Transparency policy." } },
+      { "@type": "Question", "name": "Which languages are supported?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The interface ships in 15 languages — English, Arabic, Bengali, German, Spanish, French, Hindi, Indonesian, Japanese, Portuguese, Russian, Swahili, Turkish, Urdu, and Chinese. Stories can also be translated automatically, with a per-story toggle to view the original." } },
+      { "@type": "Question", "name": "How do creators get paid?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Readers can tip any creator's work directly in the app. Tips are split 80/20 in the creator's favor, with payouts via Stripe or PayPal under the published Creator Agreement." } },
+      { "@type": "Question", "name": "What happens with my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Privacy Policy spells out exactly what is collected and why, and you can delete your account and data from inside the app at any time. This website itself uses cookieless, aggregate analytics only." } },
+      { "@type": "Question", "name": "Where will it be available?",
+        "acceptedAnswer": { "@type": "Answer", "text": "On iOS and Android through the App Store and Google Play; country availability follows the stores. Coverage centers on Africa and its diaspora — and it's readable from anywhere." } }
+    ]
+  }
+  </script>
 </head>
 <body>
-  <h1>Mara Akụkọ</h1>
-  <p>Pan-African news, in your pocket. Original creator reporting, source-balanced perspectives, and verified narratives across the continent.</p>
-  <div class="stores">
-    <a href="https://apps.apple.com/app/id0000000000">App Store</a>
-    <a href="https://play.google.com/store/apps/details?id=com.panafrocore.panafrocore">Google Play</a>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="nav-brand" href="#top" aria-label="Mara Akụkọ — home">
+        <img src="/assets/icon-192.png" alt="" width="34" height="34" />
+        Mara&nbsp;Akụkọ
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#product" data-nav>Inside the app</a>
+        <a href="#trust" data-nav>Trust</a>
+        <a href="#creators" data-nav>Creators</a>
+        <a href="#premium" data-nav>Premium</a>
+        <a href="#faq" data-nav>FAQ</a>
+      </nav>
+      <a class="btn btn--primary nav-cta" href="https://mailchi.mp/panafrocore/appwaitlist" target="_blank" rel="noopener" data-evt="cta_clicked" data-cta="waitlist_nav">Join the waitlist</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="drawer" id="drawer" aria-label="Menu">
+    <a class="drawer-link" href="#product" data-nav>Inside the app</a>
+    <a class="drawer-link" href="#trust" data-nav>Trust &amp; verification</a>
+    <a class="drawer-link" href="#creators" data-nav>Creators</a>
+    <a class="drawer-link" href="#discover" data-nav>Discover</a>
+    <a class="drawer-link" href="#premium" data-nav>Premium</a>
+    <a class="drawer-link" href="#faq" data-nav>FAQ</a>
+    <a class="drawer-link" href="#download" data-nav>Download</a>
+    <a class="btn btn--primary" href="https://mailchi.mp/panafrocore/appwaitlist" target="_blank" rel="noopener" data-evt="cta_clicked" data-cta="waitlist_drawer" style="margin-top:20px">Join the waitlist</a>
+    <div class="drawer-stores">
+      <span class="store-pill store-pill--soon" data-store-slot="ios"><span class="sp-txt"><small>Coming soon</small><b>App Store</b></span></span>
+      <span class="store-pill store-pill--soon" data-store-slot="android"><span class="sp-txt"><small>Coming soon</small><b>Google Play</b></span></span>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="top" data-section="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">The Modern Griot</p>
+          <h1>Know the story.<br />And who&rsquo;s telling&nbsp;it.</h1>
+          <p class="hero-sub"><span class="brand-name">Mara Akụkọ</span> — Igbo for &ldquo;know the story&rdquo; — brings Pan-African news from across the continent and its diaspora into one feed, with balanced sources, labeled opinion, and a visible trust signal on every article.</p>
+          <div class="hero-ctas">
+            <a class="btn btn--primary" href="https://mailchi.mp/panafrocore/appwaitlist" target="_blank" rel="noopener" data-evt="cta_clicked" data-cta="waitlist_hero">Join the waitlist</a>
+            <a class="btn btn--ghost" href="#product" data-evt="cta_clicked" data-cta="hero_explore">See what&rsquo;s inside</a>
+          </div>
+          <div class="hero-stores">
+            <div class="store-row">
+              <span class="store-pill store-pill--soon" data-store-slot="ios"><span class="sp-txt"><small>Coming soon</small><b>App Store</b></span></span>
+              <span class="store-pill store-pill--soon" data-store-slot="android"><span class="sp-txt"><small>Coming soon</small><b>Google Play</b></span></span>
+            </div>
+            <p class="store-note">Launching soon on iOS and Android.</p>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <figure class="phone hero-phone reveal" role="img" aria-label="Illustration of the Mara Akụkọ feed: a For You and Following toggle, uppercase topic filters, a publisher news card with a genre tag, and a creator post showing a Trusted badge with Re-pulse and Save actions.">
+            <div class="phone-screen" aria-hidden="true">
+              <div class="app-status"><span>9:41</span><span class="cam"></span><span class="sig"><i></i><i></i><i></i><i></i></span></div>
+              <div class="app-body">
+                <div class="app-topc"><span class="app-burger"><i></i><i></i><i></i></span><span class="app-title">Mara Akụkọ</span><span class="app-tbicon"></span></div>
+                <span class="app-pers">Personalized</span>
+                <div class="app-seg"><b class="on">For You</b><b>Following</b></div>
+                <div class="app-chips"><span class="app-chip app-chip--on">All</span><span class="app-chip">Tech</span><span class="app-chip">Economy</span><span class="app-chip">Health</span><span class="app-chip">Culture</span></div>
+                <div class="app-pub anim" style="--d:80ms">
+                  <div class="col">
+                    <p class="app-tag">Economy &middot; 2h ago</p>
+                    <p class="app-h">ECOWAS leaders set single-currency roadmap at Abuja summit</p>
+                    <p class="app-ex">Finance ministers backed a phased timeline toward a shared unit&hellip;</p>
+                  </div>
+                  <span class="app-thumb"></span>
+                </div>
+                <div class="app-cre anim" style="--d:220ms">
+                  <div class="app-crehead"><span class="app-ava app-ava--clay">AO</span><span class="app-name">Amara Obi</span><span class="app-tier">Trusted</span><span class="app-topic">Diaspora</span></div>
+                  <p class="app-h">Why the diaspora vote will reshape Accra&rsquo;s housing debate</p>
+                  <div class="app-hero"><span class="app-ov">Regional View</span></div>
+                  <div class="app-creacts">
+                    <span class="app-repulse"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>Re-pulse &middot; 128</span>
+                    <span class="app-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 4h12v17l-6-4-6 4z"/></svg>Save for Today</span>
+                  </div>
+                </div>
+                <nav class="app-nav">
+                  <b class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg>Today</b>
+                  <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Feed</b>
+                  <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 4-4 2 2-4z"/></svg>Discover</b>
+                  <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg>Library</b>
+                  <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19V9M12 19V5M19 19v-7"/></svg>Insights</b>
+                </nav>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FACT BAND ============================ -->
+    <section class="facts band" id="facts" data-section="facts">
+      <div class="container value-grid">
+        <div class="value-card reveal" style="--d:0ms">
+          <span class="vc-icon vc-i-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg></span>
+          <div><p class="vc-title">Read in 15 languages</p><p class="vc-desc">The app and the stories themselves translate automatically — one tap takes you back to the original.</p></div>
+        </div>
+        <div class="value-card reveal" style="--d:90ms">
+          <span class="vc-icon vc-i-gold" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6"/><circle cx="9.5" cy="9.5" r="1.2"/><circle cx="14.5" cy="14.5" r="1.2"/></svg></span>
+          <div><p class="vc-title">Creators keep 80%</p><p class="vc-desc">Tip the reporting you value. 80% goes straight to the journalist; we keep 20% to run payouts.</p></div>
+        </div>
+        <div class="value-card reveal" style="--d:180ms">
+          <span class="vc-icon vc-i-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h6.2a2 2 0 0 1 1.4.6l7 7a1.8 1.8 0 0 1 0 2.6l-5.4 5.4a1.8 1.8 0 0 1-2.6 0l-7-7A2 2 0 0 1 3 13.2z"/><circle cx="7.8" cy="7.8" r="1.3"/></svg></span>
+          <div><p class="vc-title">Opinion is always labeled</p><p class="vc-desc">Every article is tagged STORY or OPINION and shows its source — the line never blurs.</p></div>
+        </div>
+        <div class="value-card reveal" style="--d:270ms">
+          <span class="vc-icon vc-i-green" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div><p class="vc-title">Trust you can check</p><p class="vc-desc">Cross-source consensus tiers and a source-balance score on the coverage you actually read.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PRODUCT PILLARS ============================ -->
+    <section class="section" id="product" data-section="product">
+      <div class="container">
+        <p class="eyebrow reveal">What it is</p>
+        <h2 class="section-h reveal" style="--d:60ms">One feed. Every side of the story.</h2>
+        <p class="section-sub reveal" style="--d:120ms">News apps optimise for speed. <span class="brand-name">Mara Akụkọ</span> optimises for understanding — what happened, who&rsquo;s saying so, and how much the sources agree.</p>
+        <div class="grid-3" style="margin-top:44px">
+          <div class="card reveal" style="--d:0ms">
+            <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2EAF8E" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.6 3 14.4 0 18-3-3.6-3-14.4 0-18z"/></svg></div>
+            <h3>Read widely.</h3>
+            <p>Reporting from Pan-African and global sources, filterable by eleven topics — Politics to Climate to Diaspora — and translated into your language.</p>
+          </div>
+          <div class="card reveal" style="--d:110ms">
+            <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8C547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.4-7 9-4-1.6-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Read clearly.</h3>
+            <p>Trust tiers, source balance, and narrative analysis show how a story is being told — not just what is said.</p>
+          </div>
+          <div class="card reveal" style="--d:220ms">
+            <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E89548" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 1 1-8 0V7a4 4 0 0 1 4-4z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+            <h3>Hear new voices.</h3>
+            <p>Independent creators — Modern Griots — publish original reporting with transparent trust scores and fair pay.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FEED & BRIEFING ============================ -->
+    <section class="section" id="feed" data-section="feed">
+      <div class="container showcase">
+        <div class="showcase-copy">
+          <p class="eyebrow reveal">Free &middot; The feed &amp; Today</p>
+          <h2 class="section-h reveal" style="--d:60ms">Start with today. Then go deeper.</h2>
+          <p class="section-sub reveal" style="--d:120ms">The Today tab greets you with a time-aware briefing: the top story, Perspectives on how different outlets frame it, and Today&rsquo;s Pulse — what&rsquo;s trending region by region. The main feed carries it on, with the signals attached.</p>
+          <ul class="check-list">
+            <li class="reveal" style="--d:0ms"><b>STORY or OPINION</b> — genre label and source attribution on every card.</li>
+            <li class="reveal" style="--d:90ms"><b>A trust-tier badge</b> on each article, before you tap.</li>
+            <li class="reveal" style="--d:180ms"><b>Perspectives</b> — one story, multiple framings, side by side.</li>
+            <li class="reveal" style="--d:270ms"><b>A source-balance snapshot</b> of your day&rsquo;s reading.</li>
+          </ul>
+        </div>
+        <div class="showcase-visual">
+          <div class="phone-duo">
+            <figure class="phone reveal" role="img" aria-label="Illustration of the Daily Briefing: a time-aware greeting with a weather pill, a daily source-balance score, a featured top story, and a dark Regional Pulse card.">
+              <div class="phone-screen" aria-hidden="true">
+                <div class="app-status"><span>9:41</span><span class="cam"></span><span class="sig"><i></i><i></i><i></i><i></i></span></div>
+                <div class="app-body">
+                  <div class="app-topc"><span class="app-burger"><i></i><i></i><i></i></span><span class="app-title app-title--plain">Daily Briefing</span><span class="app-tbicon"></span></div>
+                  <div class="app-greet">
+                    <div><p class="app-date">Wednesday &middot; 11 June</p><p class="app-hello">Good morning,<br />Amara.</p></div>
+                    <span class="app-weather">24&deg; Lagos</span>
+                  </div>
+                  <div class="app-srcbal anim" style="--d:80ms">
+                    <div><p class="app-eyebrow app-eyebrow--m">Daily Source Balance</p><p class="app-bal-msg">Well-balanced</p></div>
+                    <span class="app-score">82</span>
+                  </div>
+                  <div class="app-secrow"><span class="app-sec">Top Story for You</span><span class="app-feat">Featured Original</span></div>
+                  <div class="app-bigstory anim" style="--d:160ms">
+                    <span class="app-cat">Politics</span>
+                    <p class="app-bigtitle">AU energy compact: 12 nations commit to a shared grid</p>
+                  </div>
+                  <div class="app-regional">
+                    <p class="app-regtitle">Regional Pulse</p>
+                    <div class="app-reggrid">
+                      <div><p class="app-reglabel">West Africa <b>86</b></p><div class="app-regbar"><i class="c0 grow-x" style="width:86%;--d:120ms"></i></div></div>
+                      <div><p class="app-reglabel">East Africa <b>64</b></p><div class="app-regbar"><i class="c1 grow-x" style="width:64%;--d:220ms"></i></div></div>
+                      <div><p class="app-reglabel">Southern <b>71</b></p><div class="app-regbar"><i class="c3 grow-x" style="width:71%;--d:320ms"></i></div></div>
+                      <div><p class="app-reglabel">Diaspora <b>48</b></p><div class="app-regbar"><i class="c2 grow-x" style="width:48%;--d:420ms"></i></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </figure>
+            <figure class="phone" role="img" aria-label="Illustration of the Mara Akụkọ main feed behind the briefing.">
+              <div class="phone-screen" aria-hidden="true">
+                <div class="app-body" style="padding-top:16px">
+                  <div class="app-topc"><span class="app-burger"><i></i><i></i><i></i></span><span class="app-title">Mara Akụkọ</span><span class="app-tbicon"></span></div>
+                  <div class="app-seg"><b class="on">For You</b><b>Following</b></div>
+                  <div class="app-chips"><span class="app-chip app-chip--on">All</span><span class="app-chip">Economy</span><span class="app-chip">Arts</span><span class="app-chip">Climate</span></div>
+                  <div class="app-pub">
+                    <div class="col">
+                      <p class="app-tag">Economy &middot; 1h ago</p>
+                      <p class="app-h">Cocoa futures ease as Ghana forecasts a bumper harvest</p>
+                      <p class="app-ex">Traders trimmed positions after the board&rsquo;s yield update&hellip;</p>
+                    </div>
+                    <span class="app-thumb"></span>
+                  </div>
+                  <div class="app-cre">
+                    <div class="app-crehead"><span class="app-ava app-ava--orange">KM</span><span class="app-name">Kwame Mensah</span><span class="app-tier">Established</span></div>
+                    <p class="app-h">The quiet rise of Accra&rsquo;s repair economy</p>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ DAILY INSIGHT ============================ -->
+    <section class="section cv" id="insight" data-section="insight">
+      <div class="container showcase showcase--flip">
+        <div class="showcase-copy">
+          <p class="eyebrow eyebrow--gold reveal">Premium &middot; Daily Insight</p>
+          <h2 class="section-h reveal" style="--d:60ms">One story a day, examined properly.</h2>
+          <p class="section-sub reveal" style="--d:120ms">Daily Insight is an AI-synthesized deep dive into the story that matters most — labeled section by section, so you always know what you&rsquo;re reading and where it stands.</p>
+          <div class="sec-chips reveal" style="--d:180ms">
+            <span class="chip">In brief</span><span class="chip">What happened</span><span class="chip">Verified facts</span><span class="chip">Narrative balance</span><span class="chip">Core narrative clusters</span><span class="chip">Different perspectives</span><span class="chip">Why this matters</span>
+          </div>
+          <ul class="check-list">
+            <li class="reveal" style="--d:0ms"><b>Narrative balance, quantified</b> — e.g. 75% critical vs 25% pro-state framing.</li>
+            <li class="reveal" style="--d:90ms"><b>Export any insight</b> as a PDF deep dive.</li>
+          </ul>
+          <p class="fineprint reveal" style="--d:180ms">Synthesized by AI and labeled as such — <a href="/legal/ai-transparency/" data-evt="outbound_legal_clicked" data-slug="ai-transparency">see how we use AI</a>.</p>
+        </div>
+        <div class="showcase-visual">
+          <figure class="phone reveal" role="img" aria-label="Illustration of a Daily Insight: an AI-Synthesized badge with a Strong Consensus label, a headline, an In Brief summary, a three-part narrative-balance bar of critical, objective and supportive framing, and core narrative clusters.">
+            <div class="phone-screen" aria-hidden="true">
+              <div class="app-status"><span>9:41</span><span class="cam"></span><span class="sig"><i></i><i></i><i></i><i></i></span></div>
+              <div class="app-body">
+                <div class="app-topc"><span class="app-burger"><i></i><i></i><i></i></span><span class="app-title app-title--plain">Daily Insight</span><span class="app-tbicon"></span></div>
+                <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:2px">
+                  <span class="app-badge" style="background:var(--app-green);color:var(--app-bg)">AI-Synthesized</span>
+                  <span class="app-badge" style="background:var(--app-mint);color:var(--app-green)">Strong Consensus</span>
+                </div>
+                <p class="app-eyebrow app-eyebrow--m" style="margin-top:5px">11 min ago &bull; 8 sources</p>
+                <p class="app-inhead">The Sahel&rsquo;s new grain corridor: who gains, who decides?</p>
+                <p class="app-insub">A 1,400&nbsp;km rail-and-road link will move grain inland &mdash; coverage splits on who sets the price.</p>
+                <div class="app-warmcard anim" style="--d:80ms">
+                  <span class="app-eyebrow app-eyebrow--g">In Brief</span>
+                  <p class="app-bullet">Ports-to-interior corridor clears its final funding round.</p>
+                  <p class="app-bullet">Local growers and state agencies differ on pricing control.</p>
+                </div>
+                <div class="app-warmcard anim" style="--d:180ms">
+                  <div class="app-secrow"><span class="app-eyebrow app-eyebrow--g">Narrative Balance</span><span class="app-badge" style="background:var(--app-mint);color:var(--app-green)">Contested</span></div>
+                  <p class="app-nbsub" style="margin-top:4px">Framing is contested</p>
+                  <div class="app-nb3 bar-reveal" style="--d:280ms"><i class="crit" style="flex:58">58%</i><i class="obj" style="flex:27">27%</i><i class="sup" style="flex:15">15%</i></div>
+                  <div class="app-nblegend"><span><i style="background:#C45545"></i>Critical</span><span><i style="background:var(--app-green)"></i>Objective</span><span><i style="background:var(--app-clay)"></i>Supportive</span></div>
+                </div>
+                <span class="app-eyebrow app-eyebrow--g">Core Narrative Clusters</span>
+                <div class="app-clusters"><span class="app-cluster">Food security</span><span class="app-cluster">Sovereignty</span><span class="app-cluster">Trade routes</span><span class="app-cluster">Financing</span></div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ TRUST ============================ -->
+    <section class="section band cv" id="trust" data-section="trust">
+      <div class="container">
+        <div class="trust-head">
+          <p class="eyebrow reveal">Why it&rsquo;s different</p>
+          <h2 class="section-h reveal" style="--d:60ms">Trust isn&rsquo;t claimed. It&rsquo;s measured.</h2>
+          <p class="section-sub reveal" style="--d:120ms">Most apps ask you to trust them. <span class="brand-name">Mara Akụkọ</span> shows its work.</p>
+        </div>
+        <div class="trust-grid">
+          <div class="trust-cards">
+            <div class="trust-card reveal" style="--d:0ms">
+              <h3>Consensus tiers.</h3>
+              <p>Facts are checked across sources and graded — Superior, Strong, Fair, or Weak consensus — on the story, in plain sight.</p>
+              <span class="chip chip--free">Free badges &middot; premium heatmaps</span>
+            </div>
+            <div class="trust-card reveal" style="--d:90ms">
+              <h3>Bias, mapped.</h3>
+              <p>Regional heatmaps show how coverage skews — neutral, critical, pro-state — and where local voices diverge from external framing.</p>
+              <span class="chip chip--premium">Premium</span>
+            </div>
+            <div class="trust-card reveal" style="--d:180ms">
+              <h3>Coverage gaps.</h3>
+              <p>See what isn&rsquo;t being reported, region by region — and which high-trust sources are missing from the conversation.</p>
+              <span class="chip chip--premium">Premium</span>
+            </div>
+            <div class="trust-card reveal" style="--d:270ms">
+              <h3>Source balance.</h3>
+              <p>A diversity score for your reading — African, global, and diaspora sources — with overlap detection when outlets share a media group.</p>
+              <span class="chip chip--premium">Premium</span>
+            </div>
+            <div class="trust-wide reveal" style="--d:340ms">
+              <h3>AI is advisory. Humans decide.</h3>
+              <p>AI models help score trust and bias — they never remove content, suspend accounts, or change a creator&rsquo;s score on their own. Every evaluation records a confidence level and a rationale.</p>
+              <a class="text-link" href="/legal/ai-transparency/" data-evt="outbound_legal_clicked" data-slug="ai-transparency">Read the AI Transparency policy</a>
+            </div>
+          </div>
+          <div class="trust-visual">
+            <figure class="phone reveal" role="img" aria-label="Illustration of the Trust Heatmap: Composite, Accuracy, Quality and Authenticity metric tabs, a Regional Trust Pulse map with tier-coloured markers, and a Framing Balance bar split across Neutral, Pro-State and Critical coverage.">
+              <div class="phone-screen" aria-hidden="true">
+                <div class="app-status"><span>9:41</span><span class="cam"></span><span class="sig"><i></i><i></i><i></i><i></i></span></div>
+                <div class="app-body">
+                  <div class="app-topc"><span class="app-burger"><i></i><i></i><i></i></span><span class="app-title">Trust Heatmaps</span><span class="app-tbicon"></span></div>
+                  <p class="app-heatsub" style="text-align:center;margin-top:0">8.4 Trust Index</p>
+                  <div class="app-mtabs"><span class="app-mtab on">Composite</span><span class="app-mtab">Accuracy</span><span class="app-mtab">Quality</span><span class="app-mtab">Authenticity</span></div>
+                  <div class="app-warmcard anim" style="--d:80ms">
+                    <div class="app-secrow"><span class="app-eyebrow app-eyebrow--m">Live Distribution</span><span class="app-heatsub" style="margin:0">128 stories</span></div>
+                    <div style="display:flex;align-items:baseline;gap:6px;margin-top:2px"><span class="app-bigscore">8.4</span><span class="app-sec" style="font-size:9px">Regional Trust Pulse</span></div>
+                    <div class="app-map">
+                      <svg viewBox="0 0 110 124" aria-hidden="true"><path class="land" d="M56 6c8 0 12 5 19 6 8 1 14-1 16 4 2 5-4 10-2 16 2 7 8 10 6 18-2 8-10 10-12 18-2 10-8 18-14 30-4 8-8 16-13 12-4-3-5-12-9-20-5-10-14-16-18-28-4-10-2-20 2-28 3-7 2-16 8-20 6-4 9-8 11-8z"/></svg>
+                      <span class="app-mk t2" style="left:40%;top:26%"></span>
+                      <span class="app-mk t1" style="left:54%;top:32%"></span>
+                      <span class="app-mk t3" style="left:46%;top:46%"></span>
+                      <span class="app-mk t1" style="left:52%;top:60%"></span>
+                      <span class="app-mk t4" style="left:60%;top:40%"></span>
+                    </div>
+                    <div class="app-legend"><span>Low</span><span class="scale"></span><span>High-Trust</span></div>
+                  </div>
+                  <div class="app-warmcard anim" style="--d:180ms">
+                    <div class="app-secrow"><span class="app-eyebrow app-eyebrow--m">Bias Distribution</span><span class="app-badge" style="background:var(--app-warm);color:var(--app-text-2)">Aggregated Region</span></div>
+                    <p class="app-nbsub" style="margin-top:3px">Framing Balance</p>
+                    <div class="app-bias3 bar-reveal" style="--d:280ms"><i class="neu" style="flex:45">45%</i><i class="pro" style="flex:30">30%</i><i class="cri" style="flex:25">25%</i></div>
+                    <div class="app-nblegend"><span><i style="background:#1F6A57"></i>Neutral</span><span><i style="background:#964902"></i>Pro-State</span><span><i style="background:#703500"></i>Critical</span></div>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CREATORS ============================ -->
+    <section class="section cv" id="creators" data-section="creators">
+      <div class="container showcase">
+        <div class="showcase-copy">
+          <p class="eyebrow reveal">For writers &amp; reporters</p>
+          <h2 class="section-h reveal" style="--d:60ms">Modern Griots, fairly paid.</h2>
+          <p class="section-sub reveal" style="--d:120ms">The griot carried a community&rsquo;s story. <span class="brand-name">Mara Akụkọ</span> gives that work a studio — and a paycheck.</p>
+          <ul class="check-list">
+            <li class="reveal" style="--d:0ms"><b>Creator Studio</b> — write, draft, publish, with per-article analytics.</li>
+            <li class="reveal" style="--d:90ms"><b>Readers tip the work they value</b> — creators keep 80%.</li>
+            <li class="reveal" style="--d:180ms"><b>Payouts via Stripe or PayPal</b>, on your schedule.</li>
+            <li class="reveal" style="--d:270ms"><b>A transparent trust score</b> — accuracy, quality, authenticity — you can see and grow.</li>
+            <li class="reveal" style="--d:360ms"><b>Featured placement</b> in Discover&rsquo;s Modern Griots carousel.</li>
+          </ul>
+          <p class="fineprint reveal" style="--d:420ms">The full terms live in the <a href="/legal/creator-agreement/" data-evt="outbound_legal_clicked" data-slug="creator-agreement">Creator Agreement</a>.</p>
+        </div>
+        <div class="showcase-visual">
+          <figure class="phone reveal" role="img" aria-label="Illustration of Creator Studio: twin Trust Score and Studio Output cards, a trust-score block of 87 with a Trusted tier and the factors boosting and lowering it, a two-by-two analytics grid, and a reader-tips row showing the creator keeps 80%.">
+            <div class="phone-screen" aria-hidden="true">
+              <div class="app-status"><span>9:41</span><span class="cam"></span><span class="sig"><i></i><i></i><i></i><i></i></span></div>
+              <div class="app-body">
+                <div class="app-topc"><span class="app-ava" style="width:17px;height:17px">A</span><span class="app-title app-title--plain">Creator Studio</span><span class="app-write">Write</span></div>
+                <div class="app-m2">
+                  <div class="app-mcard anim" style="--d:60ms"><span class="app-eyebrow app-eyebrow--m">Trust Score</span><p class="app-mval">87.2&hairsp;/&hairsp;100</p><p class="app-mdet">Strong trust signal</p></div>
+                  <div class="app-mcard anim" style="--d:140ms"><span class="app-eyebrow app-eyebrow--m">Studio Output</span><p class="app-mval">12 live &middot; 3 drafts</p><p class="app-mdet">2 pending review</p></div>
+                </div>
+                <div class="app-warmcard anim" style="--d:200ms">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div><span class="app-eyebrow app-eyebrow--m">Trust Score</span><p class="app-trustnum">87</p></div>
+                    <span class="app-tierpill">Trusted</span>
+                  </div>
+                  <span class="app-eyebrow app-eyebrow--g" style="display:block;margin-top:8px">Boosting your score</span>
+                  <p class="app-contrib"><span>Reviewer-assessed accuracy</span><b class="pos">+6</b></p>
+                  <p class="app-contrib"><span>Consistent publishing</span><b class="pos">+4</b></p>
+                  <span class="app-eyebrow app-eyebrow--m" style="display:block;margin-top:7px">Working against you</span>
+                  <p class="app-contrib"><span>1 open report</span><b class="neg">&minus;3</b></p>
+                </div>
+                <div class="app-an">
+                  <div class="app-antile"><span class="app-eyebrow app-eyebrow--m">Views</span><p class="app-anval">48.2K</p></div>
+                  <div class="app-antile"><span class="app-eyebrow app-eyebrow--m">Likes</span><p class="app-anval">6.1K</p></div>
+                  <div class="app-antile"><span class="app-eyebrow app-eyebrow--m">Comments</span><p class="app-anval">1.3K</p></div>
+                  <div class="app-antile"><span class="app-eyebrow app-eyebrow--m">Followers</span><p class="app-anval">920</p></div>
+                </div>
+                <div class="app-earn"><span>Reader tips &middot; you keep 80%</span><b>&euro;128</b></div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ DISCOVER & PERSONALIZATION ============================ -->
+    <section class="section cv" id="discover" data-section="discover">
+      <div class="container">
+        <p class="eyebrow reveal">Discover &amp; personalization</p>
+        <h2 class="section-h reveal" style="--d:60ms">Made for how you read.</h2>
+        <p class="section-sub reveal" style="--d:120ms">Pick your topics once, and the app shapes itself around them — in your language, on every device.</p>
+        <div class="duo-cols">
+          <div class="list-card reveal" style="--d:0ms">
+            <h3>In Discover</h3>
+            <ul>
+              <li><b>Trending Narratives</b> — the conversations gathering momentum.</li>
+              <li><b>Modern Griots</b> — a rotating carousel of creators worth following.</li>
+              <li><b>Pulse of the Regions</b> — what each region is reading right now.</li>
+              <li><b>Curated Collections</b> — hand-picked story groupings.</li>
+              <li><b>Search</b> — topics, creators, regions, and the archive.</li>
+            </ul>
+          </div>
+          <div class="list-card list-card--alt reveal" style="--d:120ms">
+            <h3>Yours by default</h3>
+            <ul>
+              <li><b>Topics you choose</b> — eleven to mix, from Politics to Climate.</li>
+              <li><b>Automatic translation</b> with a per-story toggle to view the original.</li>
+              <li><b>Light, dark, or system</b> theme — warm cream or deep charcoal.</li>
+              <li><b>Saves and follows synced</b> across your devices.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lang-strip reveal" style="--d:200ms" aria-label="Interface languages">
+          <span>English</span><span lang="ar">العربية</span><span lang="bn">বাংলা</span><span lang="de">Deutsch</span><span lang="es">Español</span><span lang="fr">Français</span><span lang="hi">हिन्दी</span><span lang="id">Bahasa Indonesia</span><span lang="ja">日本語</span><span lang="pt">Português</span><span lang="ru">Русский</span><span lang="sw">Kiswahili</span><span lang="tr">Türkçe</span><span lang="ur">اردو</span><span lang="zh">中文</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ NOTIFICATIONS ============================ -->
+    <section class="section band cv" id="alerts" data-section="alerts">
+      <div class="container">
+        <p class="eyebrow reveal">Stay close</p>
+        <h2 class="section-h reveal" style="--d:60ms">The news that finds you.</h2>
+        <div class="alert-cards">
+          <div class="alert-card reveal" style="--d:0ms">
+            <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2EAF8E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg></div>
+            <h3>Breaking on your saved stories</h3>
+            <p>When a story you saved takes a major turn, you hear about it first.</p>
+          </div>
+          <div class="alert-card reveal" style="--d:110ms">
+            <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E89548" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-10 10H4v-6z"/></svg></div>
+            <h3>When your creators publish</h3>
+            <p>Follow a Modern Griot and their next piece lands on your lock screen.</p>
+          </div>
+          <div class="alert-card reveal" style="--d:220ms">
+            <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+            <h3>Smart Alerts <span class="chip chip--premium">Premium</span></h3>
+            <p>Set your own rules on discourse shifts — get pinged when the framing flips on a topic you track, in a dedicated alert inbox.</p>
+          </div>
+        </div>
+        <p class="alerts-foot reveal">And every story is a conversation — like it, comment on it, share it anywhere.</p>
+      </div>
+    </section>
+
+    <!-- ============================ PREMIUM ============================ -->
+    <section class="section cv" id="premium" data-section="premium">
+      <div class="container">
+        <p class="eyebrow eyebrow--gold reveal">Free vs Premium</p>
+        <h2 class="section-h reveal" style="--d:60ms">Free to read widely.<br />Premium to see deeply.</h2>
+        <div class="compare">
+          <div class="plan reveal" style="--d:0ms">
+            <div class="plan-head"><h3>Free</h3><span class="plan-tag">Everyone</span></div>
+            <p style="color:var(--text-3);font-size:13.5px">The full reading experience, no card required.</p>
+            <ul>
+              <li><b>The Pan-African feed</b> with eleven topics.</li>
+              <li><b>Daily Briefing</b> with Perspectives and Today&rsquo;s Pulse.</li>
+              <li><b>Trust-tier badges</b> on every story.</li>
+              <li><b>Creator content</b> — follow and tip Modern Griots.</li>
+              <li><b>Automatic translation</b> across 15 languages.</li>
+              <li><b>Breaking &amp; creator notifications.</b></li>
+            </ul>
+          </div>
+          <div class="plan plan--premium reveal" style="--d:120ms">
+            <div class="plan-head"><h3>Premium</h3><span class="plan-tag">Free trial</span></div>
+            <p style="color:var(--text-3);font-size:13.5px">Everything in Free, plus the analysis layer.</p>
+            <ul>
+              <li><b>Daily Insight</b> — the AI-synthesized deep dive, with PDF export.</li>
+              <li><b>Trust Heatmaps</b> — regional bias and consensus, mapped.</li>
+              <li><b>Source Balance</b> — a diversity score for your reading.</li>
+              <li><b>Smart Alerts</b> — your rules, your inbox.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="compare-note reveal">Premium is a monthly or annual subscription with a free trial — cancel anytime. Pricing is set in your local App Store or Google Play at launch.</p>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ ============================ -->
+    <section class="section cv" id="faq" data-section="faq">
+      <div class="container faq-wrap">
+        <p class="eyebrow reveal">Questions</p>
+        <h2 class="section-h reveal" style="--d:60ms">Asked and answered.</h2>
+        <div class="faq-list reveal" style="--d:120ms">
+          <details>
+            <summary>When does <span class="brand-name">Mara Akụkọ</span> launch?</summary>
+            <p class="faq-a">Soon. The app is in final preparation for the App Store and Google Play. <a href="https://mailchi.mp/panafrocore/appwaitlist" target="_blank" rel="noopener" data-evt="cta_clicked" data-cta="waitlist_faq">Join the waitlist</a> and we&rsquo;ll email you the moment it&rsquo;s live — the download buttons on this page go live at the same time.</p>
+          </details>
+          <details>
+            <summary>How much does it cost?</summary>
+            <p class="faq-a">The core app is free — the feed, the Daily Briefing with Perspectives, trust badges, creator content, and translation. Premium adds Daily Insight, Trust Heatmaps, Source Balance, and Smart Alerts as a monthly or annual subscription with a free trial, billed through the App Store or Google Play. Cancel anytime.</p>
+          </details>
+          <details>
+            <summary>What does the name mean?</summary>
+            <p class="faq-a"><span class="brand-name">Mara Akụkọ</span> is Igbo for &ldquo;know the story&rdquo;. A griot is West Africa&rsquo;s storyteller, historian, and keeper of memory — the app is built to give that role modern tools.</p>
+          </details>
+          <details>
+            <summary>How are trust signals decided?</summary>
+            <p class="faq-a">Stories are checked across sources for fact agreement and graded into consensus tiers — Superior, Strong, Fair, or Weak. AI models help with evaluation, but they are advisory only: humans make every enforcement decision, and each AI evaluation records a confidence level and rationale. The full methodology is public in our <a href="/legal/ai-transparency/" data-evt="outbound_legal_clicked" data-slug="ai-transparency">AI Transparency policy</a>.</p>
+          </details>
+          <details>
+            <summary>Which languages are supported?</summary>
+            <p class="faq-a">The interface ships in 15 languages — English, Arabic, Bengali, German, Spanish, French, Hindi, Indonesian, Japanese, Portuguese, Russian, Swahili, Turkish, Urdu, and Chinese. Stories can also be translated automatically, with a per-story toggle to view the original.</p>
+          </details>
+          <details>
+            <summary>How do creators get paid?</summary>
+            <p class="faq-a">Readers can tip any creator&rsquo;s work directly in the app. Tips are split 80/20 in the creator&rsquo;s favor, with payouts via Stripe or PayPal under the published <a href="/legal/creator-agreement/" data-evt="outbound_legal_clicked" data-slug="creator-agreement">Creator Agreement</a>.</p>
+          </details>
+          <details>
+            <summary>What happens with my data?</summary>
+            <p class="faq-a">The <a href="/legal/privacy-policy/" data-evt="outbound_legal_clicked" data-slug="privacy-policy">Privacy Policy</a> spells out exactly what is collected and why, and you can delete your account and data from inside the app at any time — see <a href="/legal/account-deletion/" data-evt="outbound_legal_clicked" data-slug="account-deletion">Account &amp; Data Deletion</a>. This website itself uses cookieless, aggregate analytics only.</p>
+          </details>
+          <details>
+            <summary>Where will it be available?</summary>
+            <p class="faq-a">On iOS and Android through the App Store and Google Play; country availability follows the stores. Coverage centers on Africa and its diaspora — and it&rsquo;s readable from anywhere.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FINAL CTA ============================ -->
+    <section class="section final" id="download" data-section="download">
+      <div class="container">
+        <p class="eyebrow eyebrow--gold reveal">Launching soon</p>
+        <h2 class="section-h h-gold reveal" style="--d:60ms">Be there when the story starts.</h2>
+        <p class="section-sub reveal" style="--d:120ms"><span class="brand-name">Mara Akụkọ</span> is in final preparation for the App Store and Google Play.</p>
+        <div class="reveal" style="--d:160ms;margin-top:32px"><a class="btn btn--primary" href="https://mailchi.mp/panafrocore/appwaitlist" target="_blank" rel="noopener" data-evt="cta_clicked" data-cta="waitlist_final">Join the waitlist</a></div>
+        <div class="store-row reveal" style="--d:200ms">
+          <span class="store-pill store-pill--soon" data-store-slot="ios"><span class="sp-txt"><small>Coming soon</small><b>App Store</b></span></span>
+          <span class="store-pill store-pill--soon" data-store-slot="android"><span class="sp-txt"><small>Coming soon</small><b>Google Play</b></span></span>
+        </div>
+        <a class="text-link reveal" style="--d:240ms" href="#product" data-evt="cta_clicked" data-cta="final_explore">Explore the app &uarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
   <footer class="site-footer">
-    <a href="/legal/">Legal &amp; Policies</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/assets/icon-192.png" alt="" width="44" height="44" />
+          <a class="nav-brand" href="#top">Mara&nbsp;Akụkọ</a>
+          <span class="motto">The Modern Griot</span>
+          <p>Pan-African news with transparent trust — balanced sources, labeled opinion, and creators paid fairly.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="#product">Inside the app</a></li>
+            <li><a href="#trust">Trust &amp; verification</a></li>
+            <li><a href="#creators">Creators</a></li>
+            <li><a href="#discover">Discover</a></li>
+            <li><a href="#premium">Premium</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#download">Download</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="/legal/privacy-policy/" data-evt="outbound_legal_clicked" data-slug="privacy-policy">Privacy Policy</a></li>
+            <li><a href="/legal/terms-of-service/" data-evt="outbound_legal_clicked" data-slug="terms-of-service">Terms of Service</a></li>
+            <li><a href="/legal/eula/" data-evt="outbound_legal_clicked" data-slug="eula">EULA</a></li>
+            <li><a href="/legal/creator-agreement/" data-evt="outbound_legal_clicked" data-slug="creator-agreement">Creator Agreement</a></li>
+            <li><a href="/legal/community-guidelines/" data-evt="outbound_legal_clicked" data-slug="community-guidelines">Community Guidelines</a></li>
+            <li><a href="/legal/content-moderation-policy/" data-evt="outbound_legal_clicked" data-slug="content-moderation-policy">Content Moderation</a></li>
+            <li><a href="/legal/copyright-policy/" data-evt="outbound_legal_clicked" data-slug="copyright-policy">Copyright Policy</a></li>
+            <li><a href="/legal/appeals-policy/" data-evt="outbound_legal_clicked" data-slug="appeals-policy">Appeals Policy</a></li>
+            <li><a href="/legal/ai-transparency/" data-evt="outbound_legal_clicked" data-slug="ai-transparency">AI Transparency</a></li>
+            <li><a href="/legal/account-deletion/" data-evt="outbound_legal_clicked" data-slug="account-deletion">Account &amp; Data Deletion</a></li>
+            <li><a href="/legal/" data-evt="outbound_legal_clicked" data-slug="hub">All policies &rarr;</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <p>Contact Us: <a href="mailto:contactus@panafrocore.com" data-evt="cta_clicked" data-cta="contact_email">contactus@panafrocore.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Ikeniile Nexus</span>
+        <span>&ldquo;<span class="brand-name">Mara Akụkọ</span>&rdquo; is Igbo for &ldquo;know the story.&rdquo;</span>
+      </div>
+    </div>
   </footer>
+
+  <!-- Sticky mobile banner (shown <768px after the hero, dismissible) -->
+  <aside class="sticky-banner" aria-label="Get the app">
+    <img src="/assets/icon-192.png" alt="" width="38" height="38" />
+    <div class="sb-txt">
+      <b>Mara Akụkọ</b>
+      <span>Launching soon on iOS &amp; Android</span>
+    </div>
+    <a class="btn btn--primary" href="https://mailchi.mp/panafrocore/appwaitlist" target="_blank" rel="noopener" data-evt="cta_clicked" data-cta="waitlist_sticky">Join waitlist</a>
+    <button class="sb-close" type="button" aria-label="Dismiss">&times;</button>
+  </aside>
 </body>
 </html>

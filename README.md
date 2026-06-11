@@ -16,13 +16,50 @@ When the Mara Akụkọ Flutter app is installed and the user taps `https://mara
 |---|---|
 | `.well-known/apple-app-site-association` | iOS Universal Link manifest. JSON, no extension, served as `application/json`. |
 | `.well-known/assetlinks.json` | Android App Link manifest. JSON, served as `application/json`. |
-| `_headers` | Cloudflare Pages config: enforces `Content-Type: application/json` on the `.well-known/*` files and sets a 1-hour cache on `/legal/*`. |
+| `_headers` | Cloudflare config: `Content-Type: application/json` on `.well-known/*`, 1-hour cache on `/legal/*`, site-wide security headers, and long-cache on `/assets/*` (fonts immutable 1y). |
 | `_redirects` | Routes `/article/*` to `article-fallback.html` and `/creator/*` to `creator-fallback.html`, plus trailing-slash rewrites for `/legal/*` (auto-managed block — see below). |
-| `article-fallback.html` | Per-article landing page. Detects platform via UA, redirects to store after 1s, with "Continue in Browser" escape hatch. |
-| `creator-fallback.html` | Per-creator-profile landing page. Same UA-detect + store-redirect behaviour, reading the id from `/creator/<id>`. |
-| `index.html` | Marketing root. Links to `/legal/`. |
+| `article-fallback.html` | Per-article landing page. Detects platform via UA, redirects to store after 1s, with "Continue in Browser" escape hatch. Store URLs come from `assets/js/config.js` — pre-launch (null) it shows "launching soon" and does NOT auto-redirect. |
+| `creator-fallback.html` | Per-creator-profile landing page. Same UA-detect + config-gated store-redirect behaviour, reading the id from `/creator/<id>`. |
+| `index.html` | **Marketing site** — full single-page product site (hero, product/trust/creators/premium sections, FAQ, footer). Loads `assets/css/site.css` + `assets/js/config.js` + `assets/js/site.js`. |
+| `404.html` | Branded not-found page (served automatically by `not_found_handling: "404-page"`). |
+| `robots.txt` / `sitemap.xml` | SEO: allow-all + sitemap pointer; sitemap lists `/` and the 10 `/legal/` policy URLs. |
+| `site.webmanifest` | PWA manifest (name, phoenix icons, `#1A1612` theme). |
+| `assets/css/site.css` | All marketing-site styles + the DOM phone-mockup system. Referenced as `?v=N` — bump on change to bust the 7-day cache. |
+| `assets/js/config.js` | **THE launch lever** — `window.MARA` store URLs (null pre-launch) + the public PostHog key. See "Launch-day flip" below. |
+| `assets/js/site.js` | Nav/drawer, scroll reveals, FAQ accordion, sticky mobile banner, parallax, store-badge rendering, and cookieless PostHog analytics. No dependencies, no build. |
+| `assets/fonts/*.woff2` | Self-hosted Manrope + Newsreader subsets (the italic `*-viet` file carries the brand glyphs ụ/ọ). |
+| `assets/favicon*, icon-192/512, apple-touch-icon` | Favicon set generated from the app's `phoenix_master.png` on a cream circle. |
+| `assets/og-default.png` | 1200×630 social-share card. Regenerate by screenshotting `og-image.html` (see below). |
+| `og-image.html` | **Dev-only** artboard for generating `og-default.png`. Excluded from deploy via `.assetsignore`. |
 | `legal/index.html` | Index of all policies. **Generated** — do not edit by hand. |
 | `legal/<slug>/index.html` | One hosted policy page per slug (privacy-policy, terms-of-service, eula, …). **Generated** — do not edit by hand. |
+
+## Launch-day flip (going live in the stores)
+
+When the app is listed, point the site at the live store URLs in **one place** — every
+"Coming soon" badge across the marketing page, the mobile sticky banner, AND both
+`article`/`creator` share-fallback pages flip to live links automatically:
+
+1. Edit `assets/js/config.js` — set `appStoreUrl` and `playUrl` to the real listing URLs.
+2. Bump the `?v=1` query param on the `config.js`/`site.css`/`site.js` references in
+   `index.html` (and the `config.js` ref in both fallback pages) to bust the CDN cache.
+3. Commit + push to `main` — Cloudflare auto-deploys.
+
+Pre-launch, the fallback pages deliberately do **not** auto-redirect (a null store URL
+would otherwise bounce users to a dead App Store id / 404 Play listing); they send the
+button to `/` with a "launching soon" message instead.
+
+### Regenerating `assets/og-default.png`
+
+`og-image.html` is a 1200×630 artboard (dev-only, not deployed). To regenerate the card,
+serve the folder locally and screenshot it headless:
+
+```powershell
+# from the repo root, with any static server running on :8795 (e.g. python -m http.server 8795)
+& "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless=new --disable-gpu `
+  --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 `
+  --screenshot="assets\og-default.png" "http://127.0.0.1:8795/og-image.html"
+```
 
 ## Legal pages
 

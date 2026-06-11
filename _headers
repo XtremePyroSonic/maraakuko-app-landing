@@ -17,3 +17,21 @@
 # within the hour.
 /legal/*
   Cache-Control: public, max-age=3600
+
+# Security headers — applied site-wide. Workers Assets applies all
+# matching header rules cumulatively, so these stack on top of the
+# Content-Type / Cache-Control rules above.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Fingerprint-stable fonts can cache for a year.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS/JS/images: 7 days. The ?v=N query param in index.html is the
+# cache-bust lever — bump it whenever you change site.css / site.js.
+/assets/*
+  Cache-Control: public, max-age=604800

@@ -19,3 +19,10 @@
 README.md
 .gitignore
 .assetsignore
+
+# Dev-only artboard used to generate assets/og-default.png — never deploy.
+og-image.html
+
+# Local dev tooling (preview server config) — never deploy.
+.claude
+.claude/**

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OG artboard</title>
+  <!-- DEV-ONLY. Excluded from deploy via .assetsignore. Screenshot the
+       1200x630 .board into assets/og-default.png. -->
+  <link rel="stylesheet" href="/assets/css/site.css?v=1" />
+  <style>
+    html, body { margin: 0; background: #0f0c0a; }
+    .board {
+      width: 1200px; height: 630px; position: relative; overflow: hidden;
+      background:
+        radial-gradient(900px 700px at 88% -10%, rgba(232,197,71,.16), transparent 60%),
+        radial-gradient(700px 600px at -8% 120%, rgba(46,175,142,.10), transparent 60%),
+        #1A1612;
+      display: flex; align-items: center; padding: 0 72px; box-sizing: border-box;
+    }
+    .left { width: 660px; }
+    .badge { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+    .badge img { width: 76px; height: 76px; border-radius: 50%; }
+    .badge .nm { font: italic 600 40px/1 'Newsreader', serif; color: #F0E8DE; }
+    .eyebrow-og { font: 800 17px/1 'Manrope', sans-serif; letter-spacing: .18em; text-transform: uppercase; color: #2EAF8E; margin-bottom: 22px; }
+    h1 { font: 600 76px/1.04 'Newsreader', serif; color: #E8C547; margin: 0; letter-spacing: -.015em; }
+    .sub { font: 400 25px/1.45 'Manrope', sans-serif; color: #A8B0AC; margin-top: 26px; max-width: 600px; }
+    .chip-og {
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 34px;
+      font: 800 15px/1 'Manrope', sans-serif; letter-spacing: .06em; text-transform: uppercase;
+      color: #1A1612; background: #2EAF8E; padding: 13px 22px; border-radius: 9999px;
+    }
+    .right { position: absolute; right: -40px; top: 50%; transform: translateY(-50%) rotate(-5deg); }
+    .right .phone { width: 320px; box-shadow: 0 40px 90px rgba(0,0,0,.5); }
+  </style>
+</head>
+<body>
+  <div class="board">
+    <div class="left">
+      <div class="badge"><img src="/assets/icon-512.png" alt="" /><span class="nm">Mara Akụkọ</span></div>
+      <p class="eyebrow-og">The Modern Griot</p>
+      <h1>Know the story. And who&rsquo;s telling it.</h1>
+      <p class="sub">Pan-African news with balanced sources, labeled opinion, and a visible trust signal on every story.</p>
+      <span class="chip-og">Launching soon · iOS &amp; Android</span>
+    </div>
+    <div class="right">
+      <div class="phone is-in">
+        <div class="phone-screen">
+          <div class="app-status"><span>9:41</span><span class="cam"></span><span class="sig"><i></i><i></i><i></i><i></i></span></div>
+          <div class="app-body">
+            <div class="app-topc"><span class="app-burger"><i></i><i></i><i></i></span><span class="app-title">Mara Akụkọ</span><span class="app-tbicon"></span></div>
+            <span class="app-pers">Personalized</span>
+            <div class="app-seg"><b class="on">For You</b><b>Following</b></div>
+            <div class="app-chips"><span class="app-chip app-chip--on">All</span><span class="app-chip">Tech</span><span class="app-chip">Economy</span><span class="app-chip">Health</span><span class="app-chip">Culture</span></div>
+            <div class="app-pub">
+              <div class="col">
+                <p class="app-tag">Economy · 2h ago</p>
+                <p class="app-h">ECOWAS leaders set single-currency roadmap at Abuja summit</p>
+                <p class="app-ex">Finance ministers backed a phased timeline toward a shared unit…</p>
+              </div>
+              <span class="app-thumb"></span>
+            </div>
+            <div class="app-cre">
+              <div class="app-crehead"><span class="app-ava app-ava--clay">AO</span><span class="app-name">Amara Obi</span><span class="app-tier">Trusted</span><span class="app-topic">Diaspora</span></div>
+              <p class="app-h">Why the diaspora vote will reshape Accra’s housing debate</p>
+              <div class="app-hero"><span class="app-ov">Regional View</span></div>
+              <div class="app-creacts">
+                <span class="app-repulse"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>Re-pulse · 128</span>
+                <span class="app-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 4h12v17l-6-4-6 4z"/></svg>Save for Today</span>
+              </div>
+            </div>
+            <nav class="app-nav">
+              <b class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg>Today</b>
+              <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Feed</b>
+              <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 4-4 2 2-4z"/></svg>Discover</b>
+              <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg>Library</b>
+              <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19V9M12 19V5M19 19v-7"/></svg>Insights</b>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
