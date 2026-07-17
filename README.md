@@ -36,6 +36,10 @@ When the Mara Akụkọ Flutter app is installed and the user taps `https://mara
 
 ## Launch-day flip (going live in the stores)
 
+> **DONE 2026-07-17.** `appStoreUrl` and `playUrl` in `assets/js/config.js` now point at
+> the live listings (Apple `id6763570544`, Play `com.panafrocore.panafrocore`) and `?v=`
+> was bumped to 2. The steps below are kept for reference in case a store URL ever changes.
+
 When the app is listed, point the site at the live store URLs in **one place** — every
 "Coming soon" badge across the marketing page, the mobile sticky banner, AND both
 `article`/`creator` share-fallback pages flip to live links automatically:
@@ -115,7 +119,7 @@ Three placeholders must be replaced with real values before this site is useful:
 
 - `REPLACE_WITH_RELEASE_SHA256_COLON_SEPARATED` — SHA-256 of your Play Store upload keystore. Same command, with the release keystore path + alias + passwords. If a release keystore doesn't exist yet, leave the placeholder in for now — Play Store autoVerify won't work until a release build is signed and uploaded, but debug-build App Links will verify from the first entry.
 
-**`article-fallback.html` + `creator-fallback.html`** — once the app is listed in the stores, update `APP_STORE_URL` and `PLAY_STORE_URL` at the top of the `<script>` block in both.
+**`article-fallback.html` + `creator-fallback.html`** — nothing to edit inside these pages: both read `appStoreUrl` / `playUrl` from `assets/js/config.js` (set live 2026-07-17). If a store URL ever changes, edit `config.js` only and bump its `?v=` refs.
 
 ### 2. Push to a GitHub repo
 
