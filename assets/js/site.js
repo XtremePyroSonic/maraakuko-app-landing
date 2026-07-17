@@ -82,7 +82,7 @@
       var url = store === 'ios' ? cfg.appStoreUrl : cfg.playUrl;
       if (!url) return; // pre-launch: keep the static "Coming soon" pill
       var a = d.createElement('a');
-      a.className = 'store-pill store-pill--live';
+      a.className = 'store-badge store-badge--live';
       a.href = url;
       a.target = '_blank';
       a.rel = 'noopener';
@@ -91,8 +91,6 @@
       a.setAttribute('data-state', 'live');
       a.setAttribute('aria-label', store === 'ios' ? 'Download Mara Akụkọ on the App Store' : 'Get Mara Akụkọ on Google Play');
       a.innerHTML = slot.innerHTML;
-      var small = a.querySelector('small');
-      if (small) small.textContent = store === 'ios' ? 'Download on the' : 'Get it on';
       slot.replaceWith(a);
     });
   }

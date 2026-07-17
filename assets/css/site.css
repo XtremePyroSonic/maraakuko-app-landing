@@ -258,19 +258,17 @@ body[data-drawer-open] { overflow: hidden; }
 .store-row { display: flex; flex-wrap: wrap; gap: 12px; }
 .store-note { font-size: 13px; color: var(--text-3); margin-top: 12px; }
 
-.store-pill {
-  display: inline-flex; align-items: center; gap: 11px;
-  padding: 11px 20px 11px 16px; border-radius: 14px; text-decoration: none;
-  transition: transform var(--t-fast) var(--ease), background var(--t-fast);
+/* Official store badges (Apple SVG is flush; Google's official PNG bakes a 41px
+   clear-space border into its 646x250 canvas — visible badge 564x168 — so it is
+   scaled by 250/168 with -41/168 margins to sit flush at the same visual height). */
+.store-badge {
+  display: inline-flex; text-decoration: none; --badge-h: 52px;
+  transition: transform var(--t-fast) var(--ease), opacity var(--t-fast);
 }
-.store-pill svg { width: 22px; height: 22px; flex: none; }
-.store-pill .sp-txt { display: flex; flex-direction: column; text-align: left; }
-.store-pill .sp-txt small { font: 700 9px/1.4 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
-.store-pill .sp-txt b { font: 800 14px/1.25 var(--sans); }
-.store-pill--soon { background: var(--surface-2); color: var(--text-2); box-shadow: inset 0 0 0 1px var(--outline); cursor: default; }
-.store-pill--soon small { color: var(--text-3); }
-.store-pill--live { background: var(--text); color: #221D18; }
-.store-pill--live:hover { transform: translateY(-2px); background: #FFF8EC; }
+.store-badge img { display: block; height: var(--badge-h); width: auto; }
+.store-badge img.badge-gplay { height: calc(var(--badge-h) * 250 / 168); margin: calc(var(--badge-h) * -41 / 168); }
+a.store-badge--live:hover { transform: translateY(-2px); opacity: .9; }
+a.store-badge--live:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 8px; }
 
 .hero-visual { position: relative; display: flex; justify-content: center; }
 .hero-phone { transform: translateY(var(--py, 0)) rotate(-4deg); will-change: transform; }
@@ -446,6 +444,7 @@ body[data-drawer-open] { overflow: hidden; }
   display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between;
   color: var(--text-3); font-size: 13px;
 }
+.store-legal { margin-top: 16px; color: var(--text-3); font-size: 11px; line-height: 1.6; max-width: 86ch; }
 
 /* ---- 17. Sticky mobile banner ------------------------------------------------------------------ */
 .sticky-banner {
@@ -666,8 +665,8 @@ body[data-drawer-open] { overflow: hidden; }
   .value-grid { grid-template-columns: 1fr; gap: 22px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .hero-ctas .btn { width: 100%; }
-  .store-row { width: 100%; }
-  .store-pill { flex: 1; justify-content: center; }
+  .store-row { width: 100%; justify-content: center; }
+  .store-badge { --badge-h: 46px; }
 }
 @media (min-width: 768px) {
   .sticky-banner { display: none !important; }

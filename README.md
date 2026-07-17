@@ -39,6 +39,10 @@ When the Mara Akụkọ Flutter app is installed and the user taps `https://mara
 > **DONE 2026-07-17.** `appStoreUrl` and `playUrl` in `assets/js/config.js` now point at
 > the live listings (Apple `id6763570544`, Play `com.panafrocore.panafrocore`) and `?v=`
 > was bumped to 2. The steps below are kept for reference in case a store URL ever changes.
+> Same day, the hand-drawn "store pills" were replaced with the **official Apple/Google
+> badge assets** (`assets/badges/`, self-hosted; Google's PNG bakes in a 41px clear-space
+> border that `site.css` compensates for). The old "Coming soon" pill state is gone: if a
+> URL is ever nulled again, the badge renders unlinked (site.js still skips the anchor swap).
 
 When the app is listed, point the site at the live store URLs in **one place** — every
 "Coming soon" badge across the marketing page, the mobile sticky banner, AND both
